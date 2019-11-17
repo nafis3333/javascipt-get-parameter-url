@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Parameter URL With Javascript</title>
+</head>
+
+<body>
+    
+    <ul>
+        <li><a href="?name=Jhon&message=hello-hello-hello">Click Me 1</a></li>
+        <li><a href="?name=Bambang&message=halo-apa-kabar">Click Me 2</a></li>
+    </ul>
+    
+    <p>Name : <span id="name"></span></p>
+    <p>Message : <span id="message"></span></p>
+    
+    <script>
+        function $(id) {
+            if (id === undefined) {
+                return;
+            }
+            return document.getElementById(id);
+        }
+        
+        function getParameterURL(s) {
+            var x = window.location.search.substring(1);
+            var y = x.split("&");
+            for (var i = 0; i < y.length; i++) {
+                var z = y[i].split("=");
+                if (z[0] == s) {
+                    return z[1];
+                }
+            }
+            return false;
+        }
+        
+        if (getParameterURL("name")) {
+            $("name").innerHTML = getParameterURL("name");
+        }
+        
+        if (getParameterURL("message")) {
+            var m = getParameterURL("message");
+            m = m.replace(/-/g, " ");
+            $("message").innerHTML = m;
+        }
+    </script>
+    
+</body>
+</html>
