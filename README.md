@@ -1,0 +1,1 @@
+# javascipt-get-parameter-url
